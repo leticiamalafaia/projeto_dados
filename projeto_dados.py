@@ -1,3 +1,4 @@
+#%%
 import pandas as pd 
 
 import numpy as np
@@ -70,4 +71,16 @@ def gera_dados_ficticios(num_registros=600):
 
     print("Geração de dados concluída. \n")
 
-    return pd.DataFrame(dados_vendas)   
+    return pd.DataFrame(dados_vendas)  
+
+df_vendas = gera_dados_ficticios(500)
+
+df_vendas.head()
+
+df_vendas.tail()
+
+df_vendas.info()
+
+df_vendas.describe()
+
+df_vendas.dtypes
