@@ -193,6 +193,8 @@ def formatador_milhares(y, pos):
     return f'R$ {y/1000:,.0f}K'
 FuncFormatter = FuncFormatter(formatador_milhares)
 
+formatter = FuncFormatter(formatador_milhares)
+
 ax.yaxis.set_major_formatter(formatter)
 
 faturamento_ordenado.plot(kind = 'bar', ax = ax, color = sns.color_palette("viridis", len(faturamento_ordenado)))
