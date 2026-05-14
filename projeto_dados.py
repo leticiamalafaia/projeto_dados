@@ -95,4 +95,8 @@ df_vendas.info()
 
 df_vendas.head()
 
+top_10_produtos =  df_vendas.groupby('Nome_Produto')['Quantidade'].sum().sort_values(ascending= False).head(10)
+
+
+
 
