@@ -97,6 +97,15 @@ df_vendas.head()
 
 top_10_produtos =  df_vendas.groupby('Nome_Produto')['Quantidade'].sum().sort_values(ascending= False).head(10)
 
+sns.set_style("whitegrid")
 
+plt.figure(figsize= (12, 7))
 
+top_10_produtos.sort_values(ascending=True).plot(kind= 'barh', color = 'skyblue')
 
+plt.title('Top 10 Produtos Mais Vendidos', fontsize = 16)
+plt.xlabel('Quantidade Vendida', fontsize = 12)
+plt.ylabel('Produto', fontsize = 12)
+
+plt.tight_layout()
+plt.show()
