@@ -109,3 +109,42 @@ plt.ylabel('Produto', fontsize = 12)
 
 plt.tight_layout()
 plt.show()
+
+df_vendas.head()
+
+df_vendas['Mes'] = df_vendas['Data_Pedido'].dt.to_period('M')
+
+df_vendas.head()
+
+faturamento_mensal = df_vendas.groupby('Mes')['Faturamento'].sum()
+
+faturamento_mensal.index = faturamento_mensal.index.strftime('%Y-%m')
+
+faturamento_mensal.map('R$ {:,.2f}'.format)
+
+# Cria uma nova figura com tamanho de 12 por 6 polegadas
+plt.figure(figsize = (12, 6))
+
+# Plota os dados de faturamento mensal em formato de linha
+faturamento_mensal.plot(kind = 'line', marker = 'o', linestyle = '-', color = 'green')
+
+# Define o título do gráfico com fonte de tamanho 16
+plt.title('Evolução do Faturamento Mensal', fontsize = 16)
+
+# Define o rótulo do eixo X
+plt.xlabel('Mês', fontsize = 12)
+
+# Define o rótulo do eixo Y
+plt.ylabel('Faturamento (R$)', fontsize = 12)
+
+# Rotaciona os valores do eixo X em 45 graus para melhor visualização
+plt.xticks(rotation = 45)
+
+# Adiciona uma grade com estilo tracejado e linhas finas
+plt.grid(True, which = 'both', linestyle = '--', linewidth = 0.5)
+
+# Ajusta automaticamente os elementos para evitar sobreposição
+plt.tight_layout()
+
+# Exibe o gráfico
+plt.show()
