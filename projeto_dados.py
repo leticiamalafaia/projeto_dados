@@ -84,3 +84,15 @@ df_vendas.info()
 df_vendas.describe()
 
 df_vendas.dtypes
+
+df_vendas['Data_Pedido'] = pd.to_datetime(df_vendas['Data_Pedido'])
+
+df_vendas['Faturamento'] = df_vendas['Preco_Unitario'] * df_vendas['Quantidade']
+
+df_vendas['Status_Entrega'] = df_vendas['Estado'].apply(lambda estado: 'Rápida' if estado in ['SP', 'RJ', 'MG'] else 'Normal')
+
+df_vendas.info()
+
+df_vendas.head()
+
+
